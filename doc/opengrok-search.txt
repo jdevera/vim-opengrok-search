@@ -1,0 +1,161 @@
+*opengrok-search.txt*	Search OpenGrok from Vim
+
+                      OPENGROK SEARCH by Jacobo de Vera
+
+
+==============================================================================
+CONTENTS                                                    *ogsearch-contents*
+
+    1. Commands................................|ogsearch-commands|
+    2. Configuration...........................|ogsearch-configuration|
+    3. Key Mappings............................|ogsearch-keymaps|
+    4. License.................................|ogsearch-license|
+
+==============================================================================
+COMMANDS                                                    *ogsearch-commands*
+
+:Og {querytype} {text}                                                    *:Og*
+    Shows the results of searching {text} in the configured OpenGrok service
+    with a query of type {querytype}, which can be any of
+    |ogsearch-query-types|.
+
+:Ogv {querytype}                                                         *:Ogv*
+    Shows the results of searching the text in the currently selected text in
+    Visual Mode in the configured OpenGrok service with a query of type
+    {querytype}, which can be any of |ogsearch-query-types|.
+
+:OgSetProject {projectname}                                     *:OgSetProject*
+    Sets the project to use when performing searches on the configured
+    OpenGrok service.
+                                                         *ogsearch-query-types*
+In the commands that take a {querytype}, this can be one of:
+
+     Query Type    Purpose~
+     text	   For full text search
+     def	   For definition search
+     ref	   For symbol references search
+     path	   For file path search
+     hist	   For history search
+
+
+==============================================================================
+CONFIGURATION                                          *ogsearch-configuration*
+
+The behaviour of the search is configured by setting some global variables in
+your .vimrc (or anywhere before the plug-in is loaded) or, where available,
+their per-buffer counterparts before using the commands. Some of these
+settings are required and an error will be shown if they are not set.  For
+others, sensible defaults have been provided.
+
+These are the configurable settings:
+
+------------------------------------------------------------------------------
+Application URL~
+
+The full URL of the OpenGrok service that will be used for searches. This is a
+REQUIRED setting, and it can be set globally or on a per-buffer basis with
+these variables:
+    g:ogs_app_url
+    b:ogs_app_url
+
+Example:
+>
+    let b:ogs_app_url = 'http://svn.services.openoffice.org/opengrok/'
+<
+
+------------------------------------------------------------------------------
+Project Name~
+
+When the chosen OpenGrok service is indexing several projects, this OPTIONAL
+setting can be used to specify which project to choose for the searches. It
+can be set globally for all buffers or specifically for the current buffer
+with the following variables, respectively:
+
+    g:ogs_project
+    b:ogs_project
+
+Note: The project name, if set, is inserted in the URL for the search request,
+so it needs to be URL escaped: >
+
+    let b:ogs_project = '/Current\%20(trunk)'
+<
+
+By DEFAULT, the project name is not set, so all searches will use whatever
+default the OpenGrok service used has set (search in all projects by
+default).
+
+------------------------------------------------------------------------------
+Browser Command~
+
+This OPTIONAL setting specifies the web browser command to which the search
+request URL will be passed. This setting can only be set globally with the
+following variable:
+
+    g:ogs_browser_command
+
+|opengrok-search| assumes that this command takes a URL as its first
+parameter and that the command is non-blocking.
+
+The DEFAULT value is "firefox".
+
+Example: >
+
+    let g:ogs_browser_command = 'google-chrome'
+<
+
+------------------------------------------------------------------------------
+Default Map Creation~
+
+|opengrok-search| comes with a series of default key mappings for the
+different type of searches in both normal and visual mode (see
+|OGSearchKeyMaps| for details). The user is free to define their own mappings
+and the default mappings can be disabled by setting the following variable to
+1 in the .vimrc file (its defaults value is 0).
+
+    b:ogs_disable_maps
+
+Example: >
+    " Disabling opengrok-search key mappings
+    let g:ogs_disable_maps = 1
+<
+
+==============================================================================
+KEY MAPPINGS                                                 *ogsearch-keymaps*
+
+|opengrok-search| provides a series of mapping that allow performing all
+types of searches using the word under the cursor (|<cword>|) while in normal
+mode, or all the text in a visual selection when in visual mode.
+
+Default Map    Description           Mapping targets~
+<Leader>ogt    Search full text      <Plug>OpenGrokSearchText
+                                     <Plug>OpenGrokSearchSelectedText
+
+<Leader>ogd    Search definitions    <Plug>OpenGrokSearchDef
+                                     <Plug>OpenGrokSearchSelectedDef
+
+<Leader>ogr    Search symbols        <Plug>OpenGrokSearchRef
+                                     <Plug>OpenGrokSearchSelectedRef
+
+<Leader>ogp    Search file paths     <Plug>OpenGrokSearchPath
+                                     <Plug>OpenGrokSearchSelectedPath
+
+<Leader>ogh    Search file paths     <Plug>OpenGrokSearchHist
+                                     <Plug>OpenGrokSearchSelectedHist
+
+The mapping targets can be used to create custom key maps. For example: >
+
+    " Use selected text to perform a symbol references search
+    vmap ,or <Plug>OpenGrokSearchSelectedRef
+
+    " Use the word under the cursor for a symbol search
+    nmap ,or <Plug>OpenGrokSearchRef
+<
+
+==============================================================================
+LICENSE                                                      *ogsearch-license*
+
+Copyright (c) 2012 Jacobo de Vera. OpenGrok Search For Vim is distributed
+under the Vim |license|.
+
+
+ vim:tw=78:ts=8:ft=help:norl:
