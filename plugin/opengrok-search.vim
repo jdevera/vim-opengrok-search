@@ -64,7 +64,8 @@ function! s:getUrl(query_type, name, project)
     if (!exists('b:ogs_app_url') || empty(b:ogs_app_url)) && ((!exists('g:ogs_app_url') || empty(g:ogs_app_url)))
         throw 'OpenGrokSearch:AppUrlNotSet'
     endif
-    let url = b:ogs_app_url . '/search?' . a:query_type . '=' . a:name
+    let app_url = (exists('b:ogs_app_url') && !empty(b:ogs_app_url)) ? b:ogs_app_url : g:ogs_app_url
+    let url = app_url . '/search?' . a:query_type . '=' . a:name
     if a:project != ''
         let url .= '&project=' . a:project
     endif
