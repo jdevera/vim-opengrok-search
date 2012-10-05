@@ -1,4 +1,4 @@
-*opengrok-search.txt*	Search OpenGrok from Vim
+*opengrok-search.txt*       Search OpenGrok from Vim
 
                       OPENGROK SEARCH by Jacobo de Vera
 
@@ -20,9 +20,9 @@ COMMANDS                                                    *ogsearch-commands*
     |ogsearch-query-types|.
 
 :Ogv {querytype}                                                         *:Ogv*
-    Shows the results of searching the text in the currently selected text in
-    Visual Mode in the configured OpenGrok service with a query of type
-    {querytype}, which can be any of |ogsearch-query-types|.
+    Shows the results of searching the currently selected text in Visual Mode
+    in the configured OpenGrok service with a query of type {querytype}, which
+    can be any of |ogsearch-query-types|.
 
 :OgSetProject {projectname}                                     *:OgSetProject*
     Sets the project to use when performing searches on the configured
