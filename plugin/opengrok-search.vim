@@ -137,11 +137,11 @@ nnoremap <SID>Ref   :call <SID>search("ref",  expand("<cword>"))<CR>
 nnoremap <SID>Path  :call <SID>search("path", expand("<cword>"))<CR>
 nnoremap <SID>Hist  :call <SID>search("hist", expand("<cword>"))<CR>
 
-vnoremap <SID>TextV :call <SID>search("text", s:getVisualSelection())<CR>
-vnoremap <SID>DefV  :call <SID>search("def",  s:getVisualSelection())<CR>
-vnoremap <SID>RefV  :call <SID>search("ref",  s:getVisualSelection())<CR>
-vnoremap <SID>PathV :call <SID>search("path", s:getVisualSelection())<CR>
-vnoremap <SID>HistV :call <SID>search("hist", s:getVisualSelection())<CR>
+vnoremap <SID>TextV :call <SID>search("text", <SID>getVisualSelection())<CR>
+vnoremap <SID>DefV  :call <SID>search("def",  <SID>getVisualSelection())<CR>
+vnoremap <SID>RefV  :call <SID>search("ref",  <SID>getVisualSelection())<CR>
+vnoremap <SID>PathV :call <SID>search("path", <SID>getVisualSelection())<CR>
+vnoremap <SID>HistV :call <SID>search("hist", <SID>getVisualSelection())<CR>
 
 if g:ogs_create_maps == 1
     command! -buffer -nargs=+ Nmaponce call <SID>map_once('nmap', <f-args>)
