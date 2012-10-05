@@ -31,11 +31,11 @@ COMMANDS                                                    *ogsearch-commands*
 In the commands that take a {querytype}, this can be one of:
 
      Query Type    Purpose~
-     text	   For full text search
-     def	   For definition search
-     ref	   For symbol references search
-     path	   For file path search
-     hist	   For history search
+     full          For full text search
+     defs          For definition search
+     refs          For symbol references search
+     path          For file path search
+     hist          For history search
 
 
 ==============================================================================
@@ -127,14 +127,14 @@ types of searches using the word under the cursor (|<cword>|) while in normal
 mode, or all the text in a visual selection when in visual mode.
 
 Default Map    Description           Mapping targets~
-<Leader>ogt    Search full text      <Plug>OpenGrokSearchText
-                                     <Plug>OpenGrokSearchSelectedText
+<Leader>ogf    Search full text      <Plug>OpenGrokSearchFull
+                                     <Plug>OpenGrokSearchSelectedFull
 
-<Leader>ogd    Search definitions    <Plug>OpenGrokSearchDef
-                                     <Plug>OpenGrokSearchSelectedDef
+<Leader>ogd    Search definitions    <Plug>OpenGrokSearchDefs
+                                     <Plug>OpenGrokSearchSelectedDefs
 
-<Leader>ogr    Search symbols        <Plug>OpenGrokSearchRef
-                                     <Plug>OpenGrokSearchSelectedRef
+<Leader>ogr    Search symbols        <Plug>OpenGrokSearchRefs
+                                     <Plug>OpenGrokSearchSelectedRefs
 
 <Leader>ogp    Search file paths     <Plug>OpenGrokSearchPath
                                      <Plug>OpenGrokSearchSelectedPath
@@ -145,10 +145,10 @@ Default Map    Description           Mapping targets~
 The mapping targets can be used to create custom key maps. For example: >
 
     " Use selected text to perform a symbol references search
-    vmap ,or <Plug>OpenGrokSearchSelectedRef
+    vmap ,or <Plug>OpenGrokSearchSelectedRefs
 
     " Use the word under the cursor for a symbol search
-    nmap ,or <Plug>OpenGrokSearchRef
+    nmap ,or <Plug>OpenGrokSearchRefs
 <
 
 ==============================================================================

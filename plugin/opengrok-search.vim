@@ -32,9 +32,9 @@ if !exists('g:ogs_create_maps')
 endif
 
 
-let s:qmap = { 'text' : 'q',
-            \  'def'  : 'defs',
-            \  'ref'  : 'refs',
+let s:qmap = { 'full' : 'q',
+            \  'defs' : 'defs',
+            \  'refs' : 'refs',
             \  'path' : 'path',
             \  'hist' : 'hist',}
 
@@ -120,27 +120,27 @@ function! s:map_once(map_command, lhs, rhs)
     endif
 endf
 
-nnoremap <unique> <script> <Plug>OpenGrokSearchText         <SID>Text
-nnoremap <unique> <script> <Plug>OpenGrokSearchDef          <SID>Def
-nnoremap <unique> <script> <Plug>OpenGrokSearchRef          <SID>Ref
+nnoremap <unique> <script> <Plug>OpenGrokSearchFull         <SID>Full
+nnoremap <unique> <script> <Plug>OpenGrokSearchDefs         <SID>Defs
+nnoremap <unique> <script> <Plug>OpenGrokSearchRefs         <SID>Refs
 nnoremap <unique> <script> <Plug>OpenGrokSearchPath         <SID>Path
 nnoremap <unique> <script> <Plug>OpenGrokSearchHist         <SID>Hist
 
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedText <SID>TextV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedDef  <SID>DefV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedRef  <SID>RefV
+vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedFull <SID>FullV
+vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedDefs <SID>DefsV
+vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedRefs <SID>RefsV
 vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedPath <SID>PathV
 vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedHist <SID>HistV
 
-nnoremap <SID>Text  :call <SID>search("text", expand("<cword>"))<CR>
-nnoremap <SID>Def   :call <SID>search("def",  expand("<cword>"))<CR>
-nnoremap <SID>Ref   :call <SID>search("ref",  expand("<cword>"))<CR>
+nnoremap <SID>Full  :call <SID>search("full", expand("<cword>"))<CR>
+nnoremap <SID>Defs  :call <SID>search("defs", expand("<cword>"))<CR>
+nnoremap <SID>Refs  :call <SID>search("refs", expand("<cword>"))<CR>
 nnoremap <SID>Path  :call <SID>search("path", expand("<cword>"))<CR>
 nnoremap <SID>Hist  :call <SID>search("hist", expand("<cword>"))<CR>
 
-vnoremap <SID>TextV :call <SID>search("text", <SID>getVisualSelection())<CR>
-vnoremap <SID>DefV  :call <SID>search("def",  <SID>getVisualSelection())<CR>
-vnoremap <SID>RefV  :call <SID>search("ref",  <SID>getVisualSelection())<CR>
+vnoremap <SID>FullV :call <SID>search("full", <SID>getVisualSelection())<CR>
+vnoremap <SID>DefsV :call <SID>search("defs", <SID>getVisualSelection())<CR>
+vnoremap <SID>RefsV :call <SID>search("refs", <SID>getVisualSelection())<CR>
 vnoremap <SID>PathV :call <SID>search("path", <SID>getVisualSelection())<CR>
 vnoremap <SID>HistV :call <SID>search("hist", <SID>getVisualSelection())<CR>
 
@@ -148,15 +148,15 @@ if g:ogs_create_maps == 1
     command! -buffer -nargs=+ Nmaponce call <SID>map_once('nmap', <f-args>)
     command! -buffer -nargs=+ Vmaponce call <SID>map_once('vmap', <f-args>)
 
-    Nmaponce <Leader>ogt <Plug>OpenGrokSearchText
-    Nmaponce <Leader>ogd <Plug>OpenGrokSearchDef
-    Nmaponce <Leader>ogr <Plug>OpenGrokSearchRef
+    Nmaponce <Leader>ogf <Plug>OpenGrokSearchFull
+    Nmaponce <Leader>ogd <Plug>OpenGrokSearchDefs
+    Nmaponce <Leader>ogr <Plug>OpenGrokSearchRefs
     Nmaponce <Leader>ogp <Plug>OpenGrokSearchPath
     Nmaponce <Leader>ogh <Plug>OpenGrokSearchHist
 
-    Vmaponce <Leader>ogt <Plug>OpenGrokSearchSelectedText
-    Vmaponce <Leader>ogd <Plug>OpenGrokSearchSelectedDef
-    Vmaponce <Leader>ogr <Plug>OpenGrokSearchSelectedRef
+    Vmaponce <Leader>ogf <Plug>OpenGrokSearchSelectedFull
+    Vmaponce <Leader>ogd <Plug>OpenGrokSearchSelectedDefs
+    Vmaponce <Leader>ogr <Plug>OpenGrokSearchSelectedRefs
     Vmaponce <Leader>ogp <Plug>OpenGrokSearchSelectedPath
     Vmaponce <Leader>ogh <Plug>OpenGrokSearchSelectedHist
 
