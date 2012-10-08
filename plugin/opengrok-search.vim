@@ -6,7 +6,7 @@
 " TODO A command to set the search path
 
 
-if exists("g:loadedopen_grok_search")
+if exists("g:loaded_opengrok_search")
   finish
 endif
 let g:loaded_opengrok_search = 1
