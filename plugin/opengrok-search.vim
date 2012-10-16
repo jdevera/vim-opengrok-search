@@ -120,17 +120,17 @@ function! s:map_once(map_command, lhs, rhs)
     endif
 endf
 
-nnoremap <unique> <script> <Plug>OpenGrokSearchFull         <SID>Full
-nnoremap <unique> <script> <Plug>OpenGrokSearchDefs         <SID>Defs
-nnoremap <unique> <script> <Plug>OpenGrokSearchRefs         <SID>Refs
-nnoremap <unique> <script> <Plug>OpenGrokSearchPath         <SID>Path
-nnoremap <unique> <script> <Plug>OpenGrokSearchHist         <SID>Hist
+nnoremap <silent> <unique> <script> <Plug>OpenGrokSearchFull         <SID>Full
+nnoremap <silent> <unique> <script> <Plug>OpenGrokSearchDefs         <SID>Defs
+nnoremap <silent> <unique> <script> <Plug>OpenGrokSearchRefs         <SID>Refs
+nnoremap <silent> <unique> <script> <Plug>OpenGrokSearchPath         <SID>Path
+nnoremap <silent> <unique> <script> <Plug>OpenGrokSearchHist         <SID>Hist
 
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedFull <SID>FullV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedDefs <SID>DefsV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedRefs <SID>RefsV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedPath <SID>PathV
-vnoremap <unique> <script> <Plug>OpenGrokSearchSelectedHist <SID>HistV
+vnoremap <silent> <unique> <script> <Plug>OpenGrokSearchSelectedFull <SID>FullV
+vnoremap <silent> <unique> <script> <Plug>OpenGrokSearchSelectedDefs <SID>DefsV
+vnoremap <silent> <unique> <script> <Plug>OpenGrokSearchSelectedRefs <SID>RefsV
+vnoremap <silent> <unique> <script> <Plug>OpenGrokSearchSelectedPath <SID>PathV
+vnoremap <silent> <unique> <script> <Plug>OpenGrokSearchSelectedHist <SID>HistV
 
 nnoremap <SID>Full  :call <SID>search("full", expand("<cword>"))<CR>
 nnoremap <SID>Defs  :call <SID>search("defs", expand("<cword>"))<CR>
