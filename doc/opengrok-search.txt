@@ -155,7 +155,7 @@ The mapping targets can be used to create custom key maps. For example: >
 LICENSE                                                      *ogsearch-license*
 
 Copyright (c) 2012 Jacobo de Vera. OpenGrok Search For Vim is distributed
-under the Vim |license|.
+under the MIT license.
 
 
  vim:tw=78:ts=8:ft=help:norl:
