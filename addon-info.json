@@ -1,3 +1,12 @@
 {
-    'name' : 'OpenGrok Search'
+    "name" : "OpenGrok Search",
+    "version" : "0.0",
+    "author" : "Jacobo de Vera <devel@jacobodevera.com>",
+    "maintainer" : "Jacobo de Vera <devel@jacobodevera.com>",
+    "repository" : {
+        "type": "git",
+        "url": "https://github.com/jdevera/vim-opengrok-search.git"
+        },
+    "dependencies" : {},
+    "description" : "Launch OpenGrok searches directly from Vim"
 }
